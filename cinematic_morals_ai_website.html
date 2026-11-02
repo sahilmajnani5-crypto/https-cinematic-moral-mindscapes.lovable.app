@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Morals AI | Official Website</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#ff0000;--bg:#080808;--card:#151515;--white:#fff;--gray:#aaa}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Poppins',sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}.container{width:90%;max-width:1200px;margin:auto}
+section{padding:100px 0}.section-title{font-family:'Orbitron',sans-serif;text-align:center;font-size:clamp(25px,4vw,38px);margin-bottom:15px}
+.section-title span{color:var(--red)}.section-subtitle{text-align:center;color:var(--gray);margin-bottom:50px}
+header{position:fixed;top:0;width:100%;z-index:1000;background:rgba(8,8,8,.75);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,0,0,.25)}
+.navbar{height:75px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:800}.logo span{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}.nav-links a{font-size:13px;transition:.3s}.nav-links a:hover{color:var(--red)}
+.menu-btn{display:none;font-size:25px;cursor:pointer;color:white}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 75% 45%,rgba(255,0,0,.17),transparent 40%),linear-gradient(120deg,#080808,#151515,#080808)}
+.hero:before{content:"";position:absolute;width:450px;height:450px;border:1px solid rgba(255,0,0,.18);border-radius:50%;right:-100px;top:20%;box-shadow:0 0 100px rgba(255,0,0,.12)}
+.hero-content{position:relative;z-index:2;max-width:750px}.tag{display:inline-block;padding:9px 17px;border:1px solid var(--red);border-radius:30px;color:var(--red);font-size:12px;letter-spacing:2px;margin-bottom:25px}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(35px,7vw,75px);line-height:1.2;margin-bottom:20px}.hero h1 span{color:var(--red);text-shadow:0 0 25px rgba(255,0,0,.5)}
+.hero p{color:#bbb;line-height:1.9;max-width:620px;margin-bottom:35px}
+.btn{display:inline-block;padding:14px 25px;border-radius:5px;font-size:13px;font-weight:700;transition:.3s;margin:5px}.btn-red{background:var(--red);color:white}.btn-outline{border:1px solid #777}
+.btn:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(255,0,0,.35)}
+.hero-glow{position:absolute;right:12%;top:32%;color:rgba(255,0,0,.16);font-size:clamp(120px,25vw,280px);filter:drop-shadow(0 0 35px rgba(255,0,0,.3))}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-box{background:var(--card);padding:35px;border:1px solid #292929;border-radius:12px}
+.about-box h3{font-family:'Orbitron',sans-serif;margin-bottom:20px;font-size:22px}.about-box h3 span{color:var(--red)}
+.about-box p{color:#aaa;line-height:1.9;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.stat{padding:25px 15px;background:#151515;text-align:center;border:1px solid #292929;border-radius:10px;transition:.3s}
+.stat:hover{border-color:var(--red);transform:translateY(-5px)}.stat i{color:var(--red);font-size:25px;margin-bottom:12px}.stat h3{font-size:23px}
+.videos{background:#0e0e0e}.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.video-card{background:var(--card);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:.35s}
+.video-card:hover{transform:translateY(-8px);border-color:var(--red);box-shadow:0 10px 35px rgba(255,0,0,.13)}
+.video-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.video-info{padding:20px}.video-info h3{font-size:15px;margin-bottom:15px}.video-info a{color:var(--red);font-size:13px}
+.loading{text-align:center;color:var(--gray);padding:30px;grid-column:1/-1}
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.mission-card{background:#151515;border:1px solid #292929;padding:30px;border-radius:10px;transition:.3s}
+.mission-card:hover{border-color:var(--red);transform:translateY(-7px)}.mission-card i{font-size:32px;color:var(--red);margin-bottom:20px}
+.mission-card h3{margin-bottom:12px}.mission-card p{font-size:13px;color:#aaa;line-height:1.8}
+.contact{background:#101010}.contact-form{max-width:650px;margin:auto;background:#171717;padding:35px;border:1px solid #333;border-radius:12px}
+.contact-form input,.contact-form textarea{width:100%;background:#080808;border:1px solid #333;padding:15px;color:white;margin-bottom:17px;border-radius:5px;outline:none;font-family:inherit}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--red)}.contact-form button{border:none;cursor:pointer;width:100%;font-family:inherit}
+footer{padding:45px 0 20px;text-align:center;background:#050505;border-top:1px solid #292929}
+.socials{margin:25px 0}.socials a{display:inline-flex;width:42px;height:42px;align-items:center;justify-content:center;border:1px solid #444;border-radius:50%;margin:5px;transition:.3s}
+.socials a:hover{background:var(--red);border-color:var(--red);transform:translateY(-5px)}
+footer p{color:#888;font-size:12px;margin-top:10px}.credit{color:#aaa;line-height:2;margin:25px auto;font-size:12px}
+.reveal{opacity:0;transform:translateY(35px);transition:.8s ease}.reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:850px){.menu-btn{display:block}.nav-links{position:absolute;top:75px;left:0;width:100%;background:#101010;display:none;flex-direction:column;padding:25px;border-bottom:1px solid var(--red)}
+.nav-links.show{display:flex}.about-grid{grid-template-columns:1fr}.video-grid{grid-template-columns:repeat(2,1fr)}.mission-grid{grid-template-columns:1fr 1fr}.hero-glow{right:-10%;opacity:.5}}
+@media(max-width:550px){section{padding:75px 0}.video-grid,.mission-grid{grid-template-columns:1fr}.hero{min-height:90vh}.hero-glow{top:55%;right:0}.about-box{padding:25px}.contact-form{padding:20px}}
+</style>
+</head>
+<body>
+<header><nav class="navbar container">
+<a href="#home" class="logo">CINEMATIC <span>MORALS AI.</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">HOME</a></li><li><a href="#about">ABOUT</a></li><li><a href="#videos">VIDEOS</a></li><li><a href="#mission">MISSION</a></li><li><a href="#contact">CONTACT</a></li>
+</ul>
+<div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+</nav></header>
+<section class="hero" id="home"><div class="hero-glow"><i class="fab fa-youtube"></i></div><div class="container">
+<div class="hero-content reveal"><span class="tag">WELCOME TO OUR DIGITAL WORLD</span>
+<h1>STORIES THAT<br><span>INSPIRE LIVES.</span></h1>
+<p>Welcome to Cinematic Morals AI — a creative world of emotional stories, powerful life lessons and meaningful cinematic experiences. Discover stories that entertain, inspire and teach valuable morals.</p>
+<a href="https://www.youtube.com/@AJAYKumarjaat-b5k" target="_blank" rel="noopener noreferrer" class="btn btn-red"><i class="fab fa-youtube"></i> SUBSCRIBE NOW</a>
+<a href="#videos" class="btn btn-outline">EXPLORE VIDEOS <i class="fas fa-arrow-down"></i></a>
+</div></div></section>
+<section id="about"><div class="container">
+<h2 class="section-title reveal">ABOUT <span>US</span></h2><p class="section-subtitle reveal">Creativity, storytelling and meaningful lessons.</p>
+<div class="about-grid"><div class="about-box reveal"><h3>CINEMATIC <span>MORALS AI</span></h3>
+<p>Cinematic Morals AI is a YouTube content creation channel focused on cinematic storytelling and educational moral lessons. Our aim is to create engaging stories that encourage kindness, honesty, hard work, friendship and positive thinking. Every story has a message. Every lesson has a purpose.</p></div>
+<div class="stats reveal">
+<div class="stat"><i class="fas fa-film"></i><h3>AI</h3><p>Creative Stories</p></div>
+<div class="stat"><i class="fas fa-heart"></i><h3>100%</h3><p>Meaningful Lessons</p></div>
+<div class="stat"><i class="fas fa-lightbulb"></i><h3>NEW</h3><p>Ideas & Creativity</p></div>
+<div class="stat"><i class="fas fa-globe"></i><h3>ALL</h3><p>Audiences</p></div>
+</div></div></div></section>
+<section class="videos" id="videos"><div class="container">
+<h2 class="section-title reveal">LATEST <span>VIDEOS</span></h2><p class="section-subtitle reveal">Watch our latest cinematic creations.</p>
+<div class="video-grid" id="videoGrid"><div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading latest videos...</div></div>
+<div style="text-align:center;margin-top:35px"><a href="https://www.youtube.com/@AJAYKumarjaat-b5k" target="_blank" rel="noopener noreferrer" class="btn btn-red">VIEW ALL VIDEOS <i class="fas fa-arrow-right"></i></a></div>
+</div></section>
+<section id="mission"><div class="container">
+<h2 class="section-title reveal">OUR <span>MISSION</span></h2><p class="section-subtitle reveal">More than entertainment — a message for life.</p>
+<div class="mission-grid">
+<div class="mission-card reveal"><i class="fas fa-book-open"></i><h3>Education</h3><p>Sharing valuable lessons through engaging stories and creative ideas.</p></div>
+<div class="mission-card reveal"><i class="fas fa-hand-holding-heart"></i><h3>Human Values</h3><p>Promoting kindness, honesty, respect, friendship and humanity.</p></div>
+<div class="mission-card reveal"><i class="fas fa-video"></i><h3>Cinematic Creativity</h3><p>Combining AI technology and visual storytelling to create memorable experiences.</p></div>
+</div></div></section>
+<section class="contact" id="contact"><div class="container">
+<h2 class="section-title reveal">GET IN <span>TOUCH</span></h2><p class="section-subtitle reveal">Have an idea? Let's connect.</p>
+<form class="contact-form reveal" id="contactForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+<button type="submit" class="btn btn-red">SEND MESSAGE <i class="fas fa-paper-plane"></i></button>
+</form></div></section>
+<footer><div class="container">
+<div class="logo">CINEMATIC <span style="color:red">MORALS AI.</span></div>
+<div class="socials">
+<a href="https://www.youtube.com/@AJAYKumarjaat-b5k" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<a href="#contact" aria-label="Contact"><i class="fas fa-envelope"></i></a>
+<a href="#home" aria-label="Home"><i class="fas fa-home"></i></a>
+</div>
+<div class="credit"><h3 style="color:white;margin-bottom:10px">DUET AICT — OPEN ENDED LAB 01</h3>
+<p>This website project was created by:</p>
+<p>Ajay — 26F-CS-14<br>Sahil — 26F-CS-001<br>Arbab — 26F-CS-026<br>Muhammad Yousif — 26F-CS-007</p>
+<p style="margin-top:15px">Assistant Professor: Engr. Imran Alvi</p></div>
+<p>© <span id="year"></span> Cinematic Morals AI. All Rights Reserved.</p><p>Designed with creativity and technology.</p>
+</div></footer>
+<script>
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+menuBtn.addEventListener("click",()=>{navLinks.classList.toggle("show");menuBtn.innerHTML=navLinks.classList.contains("show")?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';});
+document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>{navLinks.classList.remove("show");menuBtn.innerHTML='<i class="fas fa-bars"></i>'; }));
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("active");});},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// Replace this placeholder with your YouTube Channel ID (starts with UC).
+const CHANNEL_ID="YOUR_YOUTUBE_CHANNEL_ID";
+async function loadVideos(){
+ const grid=document.getElementById("videoGrid");
+ if(CHANNEL_ID==="YOUR_YOUTUBE_CHANNEL_ID"){
+  grid.innerHTML='<div class="loading"><i class="fab fa-youtube"></i><p style="margin-top:12px">Add your YouTube Channel ID in the JavaScript to activate automatic video updates.</p></div>';return;
+ }
+ const feed=`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+ const api=`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}`;
+ try{
+  const response=await fetch(api);if(!response.ok)throw new Error("Feed request failed");
+  const data=await response.json();if(data.status!=="ok"||!data.items?.length)throw new Error("No videos found");
+  grid.innerHTML="";
+  data.items.slice(0,3).forEach(video=>{
+   const videoId=video.guid?.match(/video:([^&]+)/)?.[1]||new URL(video.link).searchParams.get("v");
+   if(!videoId)return;
+   const card=document.createElement("div");card.className="video-card";
+   const img=document.createElement("img");img.src=`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;img.alt=video.title;img.loading="lazy";
+   const info=document.createElement("div");info.className="video-info";
+   const title=document.createElement("h3");title.textContent=video.title;
+   const link=document.createElement("a");link.href=`https://www.youtube.com/watch?v=${videoId}`;link.target="_blank";link.rel="noopener noreferrer";link.innerHTML='WATCH VIDEO <i class="fas fa-arrow-right"></i>';
+   info.append(title,link);card.append(img,info);grid.appendChild(card);
+  });
+ }catch(error){
+  grid.innerHTML='<div class="loading">Unable to load videos right now.<br><a style="color:red" href="https://www.youtube.com/@AJAYKumarjaat-b5k" target="_blank" rel="noopener noreferrer">Visit our YouTube Channel</a></div>';
+  console.error(error);
+ }
+}
+loadVideos();
+
+// Replace with your actual contact email address.
+document.getElementById("contactForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const name=document.getElementById("name").value;
+ const email=document.getElementById("email").value;
+ const message=document.getElementById("message").value;
+ const subject=encodeURIComponent("Website Contact - "+name);
+ const body=encodeURIComponent("Name: "+name+"\nEmail: "+email+"\nMessage: "+message);
+ window.location.href=`mailto:YOUR_EMAIL@example.com?subject=${subject}&body=${body}`;
+});
+</script>
+</body>
+</html>
